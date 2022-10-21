@@ -34,6 +34,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.2.9
+  smooth_page_indicator: ^1.0.0+2
+  get: ^4.6.5
+  lottie: ^1.4.2
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +54,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/dorilla_logo.png
+  image: assets/dorilla_logo_without_pad.png
 
 # The following section is specific to Flutter packages.
 flutter:

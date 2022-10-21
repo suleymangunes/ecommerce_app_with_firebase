@@ -1,4 +1,7 @@
+import 'package:dorilla/constants/myconstants.dart';
+import 'package:dorilla/pages/intropage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,16 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
-    );
+    return GetMaterialApp(
+        theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+                iconTheme: IconThemeData(size: Get.width * 0.07, color: MyConstants.instance.bitterSweet),
+                elevation: 0,
+                backgroundColor: Colors.white)),
+        title: 'Material App',
+        debugShowCheckedModeBanner: false,
+        home: const PageViewDesign());
   }
 }

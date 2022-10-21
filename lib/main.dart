@@ -1,3 +1,4 @@
+import 'package:dorilla/constants/material_color.dart';
 import 'package:dorilla/constants/myconstants.dart';
 import 'package:dorilla/pages/intropage.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
+            primarySwatch: buildMaterialColor(MyConstants.instance.bitterSweet),
             appBarTheme: AppBarTheme(
                 iconTheme: IconThemeData(size: Get.width * 0.07, color: MyConstants.instance.bitterSweet),
                 elevation: 0,

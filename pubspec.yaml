@@ -37,6 +37,10 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   get: ^4.6.5
   lottie: ^1.4.2
+  firebase_core: ^2.1.0
+  google_sign_in: ^5.4.2
+  firebase_auth: ^4.0.2
+  cloud_firestore: ^4.0.2
 
 dev_dependencies:
   flutter_test:

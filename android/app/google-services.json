@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "965327910749",
+    "project_id": "dorilla",
+    "storage_bucket": "dorilla.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965327910749:android:cf382e20265b144f291ab4",
+        "android_client_info": {
+          "package_name": "com.example.dorilla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965327910749-feknqqp7jvssdpdo4t6k9a7hsuss6547.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ0jAfb1DJEGbKjOau2_Nf8ILoD_fdBx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965327910749-feknqqp7jvssdpdo4t6k9a7hsuss6547.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

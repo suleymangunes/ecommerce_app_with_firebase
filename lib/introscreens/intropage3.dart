@@ -37,6 +37,7 @@ class IntroPage3 extends StatelessWidget {
               width: Get.width * 0.5,
               child: ElevatedButton(
                 style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(5),
                     backgroundColor: MaterialStateProperty.all(MyConstants.instance.bitterSweet),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
                 onPressed: (() {

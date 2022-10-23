@@ -1,8 +1,6 @@
 import 'package:dorilla/constants/myconstants.dart';
 import 'package:dorilla/pages/done_page.dart';
-import 'package:dorilla/pages/done_page_for_home.dart';
 import 'package:dorilla/pages/home_page.dart';
-import 'package:dorilla/pages/register_page.dart';
 import 'package:dorilla/service/auth.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -10,26 +8,22 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rive/rive.dart';
 
-class SingUpPage extends StatefulWidget {
-  const SingUpPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<SingUpPage> createState() => _SingUpPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SingUpPageState extends State<SingUpPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
-  final _formkey = GlobalKey<FormState>();
   final TextEditingController _controllerMail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-  bool _butstate = false;
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerPasswordAgain = TextEditingController();
 
-  @override
-  void dispose() {
-    _controllerMail.dispose();
-    _controllerPassword.dispose();
-    super.dispose();
-  }
+  final _formkey = GlobalKey<FormState>();
+  bool _butState = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +43,28 @@ class _SingUpPageState extends State<SingUpPage> {
                   height: Get.height * 0.1,
                 ),
                 SizedBox(
-                  height: Get.height * 0.15,
+                  height: Get.height * 0.1,
+                ),
+                SizedBox(
+                  width: Get.width * 0.8,
+                  child: TextFormField(
+                    controller: _controllerName,
+                    style: TextStyle(fontSize: Get.width * 0.04),
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.person),
+                        contentPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.04, vertical: Get.width * 0.04),
+                        labelText: "İsim Soyisim",
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "İsim alanı boş bırakılamaz.";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
                 ),
                 SizedBox(
                   width: Get.width * 0.8,
@@ -92,8 +107,49 @@ class _SingUpPageState extends State<SingUpPage> {
                       if (value == null || value.isEmpty) {
                         return "Şifre boş olamaz";
                       }
-                      if (value.length <= 8) {
+                      if (_controllerPassword.text != _controllerPasswordAgain.text) {
+                        return "Şifreler aynı olmalıdır.";
+                      } else if (value.length <= 8 && (value.contains(RegExp(r'[A-Z]')) != true) && (value.contains(RegExp(r'[0-9]')) != true)) {
+                        return "• Şifre 8 karakterden büyük olmalıdır.\n• Şifre en az bir büyük harf barındırmalıdır.\n• Şifre en az bir rakam barındırmalıdır.";
+                      } else if (value.length <= 8 && (value.contains(RegExp(r'[A-Z]')) != true)) {
+                        return "• Şifre 8 karakterden büyük olmalıdır.\n• Şifre en az bir büyük harf barındırmalıdır.";
+                      } else if (value.length <= 8 && (value.contains(RegExp(r'[0-9]')) != true)) {
+                        return "• Şifre 8 karakterden büyük olmalıdır.\n• Şifre en az bir rakam barındırmalıdır.";
+                      } else if ((value.contains(RegExp(r'[A-Z]')) != true) && (value.contains(RegExp(r'[0-9]')) != true)) {
+                        return "• Şifre en az bir büyük harf barındırmalıdır.\n• Şifre en az bir rakam barındırmalıdır.";
+                      } else if (value.contains(RegExp(r'[A-Z]')) != true) {
+                        return "Şifrede en az bir büyük harf bulunmalıdır.";
+                      } else if (value.contains(RegExp(r'[0-9]')) != true) {
+                        return "Şifrede en az bir rakam bulunmalıdır.";
+                      } else if (value.length <= 8) {
                         return "Şifre 8 karakterden büyük olmalıdır.";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                SizedBox(
+                  width: Get.width * 0.8,
+                  child: TextFormField(
+                    controller: _controllerPasswordAgain,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    style: TextStyle(fontSize: Get.width * 0.04),
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.key_rounded),
+                        contentPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.04, vertical: Get.width * 0.04),
+                        labelText: "Şifre Tekrar",
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Şifre boş olamaz";
+                      }
+                      if (_controllerPassword.text != _controllerPasswordAgain.text) {
+                        return "Şifreler aynı olmalıdır.";
                       }
                       return null;
                     },
@@ -114,10 +170,10 @@ class _SingUpPageState extends State<SingUpPage> {
                       onPressed: (() {
                         if (_formkey.currentState!.validate()) {
                           setState(() {
-                            _butstate = true;
+                            _butState = true;
                           });
-                          _auth.signIn(_controllerMail.text, _controllerPassword.text).catchError((dynamic error) {
-                            Get.offAll(const SingUpPage());
+                          _auth.createPerson(_controllerName.text, _controllerMail.text, _controllerPassword.text).catchError((dynamic error) {
+                            Get.offAll(const RegisterPage());
                             Get.defaultDialog(
                                 title: "Something Went Wrong",
                                 titlePadding: EdgeInsets.all(Get.height * 0.02),
@@ -136,16 +192,20 @@ class _SingUpPageState extends State<SingUpPage> {
                                       child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
                                 ));
                           }).then((value) {
-                            Get.offAll(const MyHomePage());
+                            if (value != null) {
+                              _auth.signOutWithGoogle();
+                              _auth.signOut();
+                              Get.offAll(const DonePAge());
+                            }
                           });
                         }
                       }),
-                      child: _butstate
+                      child: _butState
                           ? SizedBox(height: Get.height * 0.065, width: 80, child: const RiveAnimation.asset("assets/loading.riv"))
                           : Padding(
                               padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04, vertical: Get.width * 0.040),
                               child: Text(
-                                "Giriş Yap",
+                                "Kaydol",
                                 style: TextStyle(fontSize: Get.width * 0.05, letterSpacing: 3),
                               ),
                             ),
@@ -153,69 +213,21 @@ class _SingUpPageState extends State<SingUpPage> {
                   ),
                 ),
                 SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                SizedBox(
-                  width: Get.width * 0.79,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(5),
-                        backgroundColor: MaterialStateProperty.all(Colors.white),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
-                    onPressed: (() async {
-                      await _auth.signInWithGoogle().catchError((dynamic error) {
-                        Get.defaultDialog(
-                            title: "Something Went Wrong",
-                            titlePadding: EdgeInsets.all(Get.height * 0.02),
-                            content: Text(
-                              error.message,
-                              style: TextStyle(fontSize: Get.width * 0.035),
-                              textAlign: TextAlign.center,
-                            ),
-                            contentPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
-                            confirm: Padding(
-                              padding: EdgeInsets.only(bottom: Get.height * 0.01),
-                              child: TextButton(
-                                  onPressed: (() {
-                                    Get.back();
-                                  }),
-                                  child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
-                            ));
-                      }).then((value) {
-                        Get.offAll(const MyHomePage());
-                      });
-                    }),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.04, vertical: Get.width * 0.030),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(height: Get.width * 0.05, child: Image.asset("assets/google.png")),
-                          Text(
-                            "Google İle Devam Et",
-                            style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width * 0.035, letterSpacing: 2, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: Get.height * 0.2,
+                  height: Get.height * 0.15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Hesabın yok mu?",
+                      "Hesabın var mı?",
                       style: TextStyle(fontSize: Get.width * 0.03),
                     ),
                     TextButton(
                         onPressed: (() {
-                          Get.to(const RegisterPage(), duration: const Duration(seconds: 1));
+                          Get.back();
                         }),
                         child: Text(
-                          "Hemen Oluştur",
+                          "Hemen Giriş Yap",
                           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: Get.width * 0.03),
                         ))
                   ],

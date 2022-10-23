@@ -35,17 +35,20 @@ class IntroPage3 extends StatelessWidget {
             SizedBox(
               height: Get.height * 0.05,
               width: Get.width * 0.5,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(5),
-                    backgroundColor: MaterialStateProperty.all(MyConstants.instance.bitterSweet),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
-                onPressed: (() {
-                  Get.to(const SingUpPage());
-                }),
-                child: Text(
-                  "BAŞLA",
-                  style: TextStyle(fontSize: Get.width * 0.06, letterSpacing: 3),
+              child: Hero(
+                tag: "basla",
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(5),
+                      backgroundColor: MaterialStateProperty.all(MyConstants.instance.bitterSweet),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
+                  onPressed: (() {
+                    Get.to(const SingUpPage(), duration: Duration(seconds: 1));
+                  }),
+                  child: Text(
+                    "BAŞLA",
+                    style: TextStyle(fontSize: Get.width * 0.06, letterSpacing: 3),
+                  ),
                 ),
               ),
             ),

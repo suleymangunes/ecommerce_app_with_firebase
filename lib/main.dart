@@ -1,7 +1,9 @@
 import 'package:dorilla/constants/material_color.dart';
 import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/firebase_options.dart';
+import 'package:dorilla/service/firebase_options.dart';
+import 'package:dorilla/pages/home_page.dart';
 import 'package:dorilla/pages/intropage.dart';
+import 'package:dorilla/service/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,11 +14,13 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,6 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.white)),
         title: 'Material App',
         debugShowCheckedModeBanner: false,
-        home: const PageViewDesign());
+        home: _auth.issignin() == null ? const PageViewDesign() : const MyHomePage());
   }
 }

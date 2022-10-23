@@ -32,7 +32,7 @@ class _DonePAgeState extends State<DonePAge> {
           children: [
             Lottie.asset("assets/done.json"),
             Text(
-              "Kayıt Başarılı Giriş Yap",
+              "Dorilla Ailesine Hoşgeldin\n",
               style: TextStyle(fontSize: Get.width * 0.04, color: MyConstants.instance.bitterSweet),
             ),
           ],

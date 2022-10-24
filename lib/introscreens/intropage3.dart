@@ -1,8 +1,8 @@
-import 'package:dorilla/constants/myconstants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../constants/myconstants.dart';
 import '../pages/sign_up_page.dart';
 
 class IntroPage3 extends StatelessWidget {
@@ -43,7 +43,7 @@ class IntroPage3 extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all(MyConstants.instance.bitterSweet),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
                   onPressed: (() {
-                    Get.to(const SingUpPage(), duration: Duration(seconds: 1));
+                    Get.to(const SingUpPage(), duration: const Duration(seconds: 1));
                   }),
                   child: Text(
                     "BAŞLA",

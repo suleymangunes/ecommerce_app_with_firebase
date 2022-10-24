@@ -1,14 +1,12 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/pages/done_page.dart';
-import 'package:dorilla/pages/done_page_for_home.dart';
-import 'package:dorilla/pages/home_page.dart';
-import 'package:dorilla/pages/register_page.dart';
-import 'package:dorilla/service/auth.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:rive/rive.dart';
+
+import '../constants/myconstants.dart';
+import '../service/auth.dart';
+import 'home_page.dart';
+import 'register_page.dart';
 
 class SingUpPage extends StatefulWidget {
   const SingUpPage({Key? key}) : super(key: key);
@@ -118,6 +116,7 @@ class _SingUpPageState extends State<SingUpPage> {
                           });
                           _auth.signIn(_controllerMail.text, _controllerPassword.text).catchError((dynamic error) {
                             Get.offAll(const SingUpPage());
+                            Future.delayed(const Duration(microseconds: 1));
                             Get.defaultDialog(
                                 title: "Something Went Wrong",
                                 titlePadding: EdgeInsets.all(Get.height * 0.02),
@@ -136,7 +135,11 @@ class _SingUpPageState extends State<SingUpPage> {
                                       child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
                                 ));
                           }).then((value) {
-                            Get.offAll(const MyHomePage());
+                            print("burda giris yapti ancak anlamadim");
+                            print("olmasi gereken deger $value");
+                            if (value != null) {
+                              Get.offAll(const MyHomePage());
+                            }
                           });
                         }
                       }),

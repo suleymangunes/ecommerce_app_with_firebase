@@ -1,5 +1,5 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/pages/sign_up_page.dart';
+import '../constants/myconstants.dart';
+import 'sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';

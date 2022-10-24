@@ -1,9 +1,8 @@
-import 'package:dorilla/pages/sign_up_page.dart';
-import 'package:dorilla/service/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+
+import '../pages/sign_up_page.dart';
+import '../service/auth.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -13,13 +12,16 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+      ),
       body: Column(
         children: [
-          Center(child: Text("this is my profile page")),
+          const Center(child: Text("this is my profile page")),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

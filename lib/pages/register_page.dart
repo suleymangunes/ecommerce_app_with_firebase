@@ -1,12 +1,11 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/pages/done_page.dart';
-import 'package:dorilla/pages/home_page.dart';
-import 'package:dorilla/service/auth.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:rive/rive.dart';
+
+import '../constants/myconstants.dart';
+import '../service/auth.dart';
+import 'done_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

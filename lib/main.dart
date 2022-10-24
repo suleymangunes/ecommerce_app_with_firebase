@@ -1,9 +1,9 @@
-import 'package:dorilla/constants/material_color.dart';
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/service/firebase_options.dart';
-import 'package:dorilla/pages/home_page.dart';
-import 'package:dorilla/pages/intropage.dart';
-import 'package:dorilla/service/auth.dart';
+import 'constants/material_color.dart';
+import 'constants/myconstants.dart';
+import 'service/firebase_options.dart';
+import 'pages/home_page.dart';
+import 'pages/intropage.dart';
+import 'service/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

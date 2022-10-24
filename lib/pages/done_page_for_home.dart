@@ -1,9 +1,9 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/pages/home_page.dart';
-import 'package:dorilla/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+
+import '../constants/myconstants.dart';
+import 'home_page.dart';
 
 class DonePAgeForHome extends StatefulWidget {
   const DonePAgeForHome({Key? key}) : super(key: key);

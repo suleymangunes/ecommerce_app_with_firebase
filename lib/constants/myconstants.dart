@@ -7,5 +7,5 @@ class MyConstants {
   final Color bitterSweetDark = const Color.fromARGB(255, 255, 81, 81);
   final Color bitterSweet = const Color(0xffFF6969);
   final Color bitterSweetLight = const Color.fromARGB(255, 255, 189, 189);
-  final Color bitterSweetLight2x = Color.fromARGB(255, 255, 213, 213);
+  final Color bitterSweetLight2x = const Color.fromARGB(255, 255, 213, 213);
 }

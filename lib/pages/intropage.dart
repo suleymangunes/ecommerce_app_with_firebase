@@ -1,7 +1,7 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/introscreens/intropage1.dart';
-import 'package:dorilla/introscreens/intropage2.dart';
-import 'package:dorilla/introscreens/intropage3.dart';
+import '../constants/myconstants.dart';
+import '../introscreens/intropage1.dart';
+import '../introscreens/intropage2.dart';
+import '../introscreens/intropage3.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

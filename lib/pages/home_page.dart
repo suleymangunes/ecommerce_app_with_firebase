@@ -1,20 +1,13 @@
-import 'package:dorilla/constants/myconstants.dart';
-import 'package:dorilla/introscreens/intropage1.dart';
-import 'package:dorilla/main.dart';
-import 'package:dorilla/pages/cart.dart';
-import 'package:dorilla/pages/categories.dart';
-import 'package:dorilla/pages/favorited.dart';
-import 'package:dorilla/pages/home.dart';
-import 'package:dorilla/pages/intropage.dart';
-import 'package:dorilla/pages/profile.dart';
-import 'package:dorilla/pages/sign_up_page.dart';
-import 'package:dorilla/service/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
+
+import '../constants/myconstants.dart';
+import '../screens/cart.dart';
+import '../screens/categories.dart';
+import '../screens/favorited.dart';
+import '../screens/home.dart';
+import '../screens/profile.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -31,7 +24,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: screens[_selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -49,10 +41,10 @@ class _MyHomePageState extends State<MyHomePage> {
             child: GNav(
               rippleColor: Colors.grey[300]!,
               hoverColor: Colors.grey[100]!,
-              gap: 8,
+              gap: 4,
               activeColor: MyConstants.instance.bitterSweetDark,
-              iconSize: Get.width * 0.065,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              iconSize: Get.width * 0.06,
+              padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02, vertical: Get.width * 0.03),
               duration: const Duration(milliseconds: 400),
               tabBackgroundColor: MyConstants.instance.bitterSweetLight2x,
               color: Colors.black54,

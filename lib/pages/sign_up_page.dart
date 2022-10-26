@@ -115,9 +115,8 @@ class _SingUpPageState extends State<SingUpPage> {
                             _butstate = true;
                           });
                           _auth.signIn(_controllerMail.text, _controllerPassword.text).catchError((dynamic error) {
-                            Get.offAll(const SingUpPage());
-                            Future.delayed(const Duration(microseconds: 1));
                             Get.defaultDialog(
+                                barrierDismissible: false,
                                 title: "Something Went Wrong",
                                 titlePadding: EdgeInsets.all(Get.height * 0.02),
                                 content: Text(
@@ -130,13 +129,11 @@ class _SingUpPageState extends State<SingUpPage> {
                                   padding: EdgeInsets.only(bottom: Get.height * 0.01),
                                   child: TextButton(
                                       onPressed: (() {
-                                        Get.back();
+                                        Get.offAll(const SingUpPage());
                                       }),
                                       child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
                                 ));
                           }).then((value) {
-                            print("burda giris yapti ancak anlamadim");
-                            print("olmasi gereken deger $value");
                             if (value != null) {
                               Get.offAll(const MyHomePage());
                             }

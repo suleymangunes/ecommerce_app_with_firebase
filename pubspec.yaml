@@ -45,6 +45,9 @@ dependencies:
   rive: ^0.9.1
   google_nav_bar: ^5.0.6
   line_icons: ^2.0.1
+  carousel_slider: ^4.1.1
+  dot_navigation_bar: ^1.0.1+4
+  toggle_switch: ^2.0.1
 
 dev_dependencies:
   flutter_test:

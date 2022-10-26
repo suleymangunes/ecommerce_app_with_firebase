@@ -172,8 +172,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             _butState = true;
                           });
                           _auth.createPerson(_controllerName.text, _controllerMail.text, _controllerPassword.text).catchError((dynamic error) {
-                            Get.offAll(const RegisterPage());
                             Get.defaultDialog(
+                                barrierDismissible: false,
                                 title: "Something Went Wrong",
                                 titlePadding: EdgeInsets.all(Get.height * 0.02),
                                 content: Text(
@@ -186,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: EdgeInsets.only(bottom: Get.height * 0.01),
                                   child: TextButton(
                                       onPressed: (() {
-                                        Get.back();
+                                        Get.offAll(const RegisterPage());
                                       }),
                                       child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
                                 ));

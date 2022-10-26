@@ -13,22 +13,19 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Hero(
-          tag: "search",
-          child: Material(
-            type: MaterialType.transparency,
-            child: TextFormField(
-              autofocus: true,
-              style: TextStyle(fontSize: Get.width * 0.05),
-              decoration: InputDecoration(
-                  labelStyle: TextStyle(fontSize: Get.width * 0.05),
-                  suffixIcon: Icon(
-                    Icons.search,
-                    size: Get.width * 0.07,
-                  ),
-                  hintText: "Search something...",
-                  hintStyle: TextStyle(fontSize: Get.width * 0.05)),
-            ),
+        title: Material(
+          type: MaterialType.transparency,
+          child: TextFormField(
+            autofocus: true,
+            style: TextStyle(fontSize: Get.width * 0.05),
+            decoration: InputDecoration(
+                labelStyle: TextStyle(fontSize: Get.width * 0.05),
+                suffixIcon: Icon(
+                  Icons.search,
+                  size: Get.width * 0.07,
+                ),
+                hintText: "Search something...",
+                hintStyle: TextStyle(fontSize: Get.width * 0.05)),
           ),
         ),
       ),

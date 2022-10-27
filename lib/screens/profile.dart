@@ -27,9 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: (() {
-                    print("${_auth.issignin()}");
-                  }),
+                  onPressed: (() {}),
                   child: const Text("anasayfa"),
                 ),
                 ElevatedButton(

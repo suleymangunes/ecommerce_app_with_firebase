@@ -32,7 +32,7 @@ class _SearchPageState extends State<SearchPage> {
       body: Center(
         child: ElevatedButton(
           onPressed: (() {}),
-          child: Text("merhaba"),
+          child: const Text("merhaba"),
         ),
       ),
     );

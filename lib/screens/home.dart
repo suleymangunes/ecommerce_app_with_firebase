@@ -172,7 +172,7 @@ class _MySilverGridState extends State<MySilverGrid> {
                       child: ElevatedButton(
                         // style: ButtonStyle(shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)))),
                         onPressed: (() {}),
-                        child: Text("Sepete Ekle"),
+                        child: const Text("Sepete Ekle"),
                       ),
                     ),
                   )
@@ -217,7 +217,6 @@ class _HomeBodyState extends State<HomeBody> {
               onPageChanged: (index, reason) {
                 setState(() {
                   activeIndex = index;
-                  print(activeIndex);
                 });
               },
               autoPlay: true,

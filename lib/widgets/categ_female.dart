@@ -38,7 +38,7 @@ class _CatFeMAleState extends State<CatFeMAle> {
               ),
               child: Card(
                 // color: Colors.red,
-                elevation: 5,
+                elevation: 3,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 // color: Colors.red,
                 margin: EdgeInsets.all(Get.width * 0.08),

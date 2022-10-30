@@ -50,6 +50,7 @@ dependencies:
   toggle_switch: ^2.0.1
   modal_bottom_sheet: ^2.1.2
   sliding_sheet: ^0.5.2
+  expandable_page_view: ^1.0.17
 
 dev_dependencies:
   flutter_test:

@@ -29,7 +29,7 @@ class _CartPageState extends State<CartPage> {
               height: Get.height * 0.15,
               child: Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                elevation: 5,
+                elevation: 3,
                 margin: EdgeInsets.symmetric(horizontal: Get.width * 0.03, vertical: Get.height * 0.01),
                 child: Row(
                   children: [
@@ -59,28 +59,40 @@ class _CartPageState extends State<CartPage> {
                           ),
                         ),
                         SizedBox(
-                          height: Get.height * 0.025,
+                          height: Get.height * 0.015,
                         ),
                         SizedBox(
                           width: Get.width * 0.55,
                           child: Row(
                             children: [
-                              Text(
-                                "4.325,09 ",
-                                style: TextStyle(overflow: TextOverflow.ellipsis, fontSize: Get.width * 0.04, fontWeight: FontWeight.bold),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "4.325,09 ",
+                                        style: TextStyle(overflow: TextOverflow.ellipsis, fontSize: Get.width * 0.04, fontWeight: FontWeight.bold),
+                                      ),
+                                      Text("TL", style: TextStyle(fontSize: Get.width * 0.03, fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: Get.width * 0.005,
+                                  ),
+                                  Text("42 Numara"),
+                                ],
                               ),
-                              Text("TL", style: TextStyle(fontSize: Get.width * 0.03, fontWeight: FontWeight.bold)),
                               Spacer(),
                               FloatingActionButton.small(
-                                backgroundColor: Colors.white,
-                                heroTag: "1$index",
-                                elevation: 3,
-                                onPressed: (() {}),
-                                child: Icon(
-                                  Icons.add,
-                                  color: MyConstants.instance.bitterSweet,
-                                ),
-                              ),
+                                  backgroundColor: Colors.white,
+                                  heroTag: "2$index",
+                                  elevation: 3,
+                                  onPressed: (() {}),
+                                  child: Icon(
+                                    Icons.delete,
+                                    color: MyConstants.instance.bitterSweet,
+                                  )),
                               Container(
                                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(7)),
                                 child: Padding(
@@ -92,14 +104,15 @@ class _CartPageState extends State<CartPage> {
                                 ),
                               ),
                               FloatingActionButton.small(
-                                  backgroundColor: Colors.white,
-                                  heroTag: "2$index",
-                                  elevation: 3,
-                                  onPressed: (() {}),
-                                  child: Icon(
-                                    Icons.delete,
-                                    color: MyConstants.instance.bitterSweet,
-                                  )),
+                                backgroundColor: Colors.white,
+                                heroTag: "1$index",
+                                elevation: 3,
+                                onPressed: (() {}),
+                                child: Icon(
+                                  Icons.add,
+                                  color: MyConstants.instance.bitterSweet,
+                                ),
+                              ),
                             ],
                           ),
                         ),

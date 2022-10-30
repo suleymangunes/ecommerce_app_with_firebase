@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dorilla/constants/myconstants.dart';
+import 'package:dorilla/pages/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -90,94 +91,100 @@ class _MySilverGridState extends State<MySilverGrid> {
           maxCrossAxisExtent: Get.width * 0.5, mainAxisSpacing: 0.0, crossAxisSpacing: 0.0, childAspectRatio: 0.56),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return Card(
-              elevation: 3,
-              margin: EdgeInsets.all(Get.width * 0.03),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                      height: Get.width * 0.4,
-                      width: Get.width * 0.4,
+          return InkWell(
+            onTap: (() {
+              Get.to(const ProductDetail());
+              print("tiklandi $index");
+            }),
+            child: Card(
+                elevation: 3,
+                margin: EdgeInsets.all(Get.width * 0.03),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                        height: Get.width * 0.4,
+                        width: Get.width * 0.4,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
+                          child: Image.network(
+                            "https://productimages.hepsiburada.net/s/245/600-800/110000232203263.jpg/format:webp",
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    SizedBox(
+                      height: Get.width * 0.11,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-                        child: Image.network(
-                          "https://productimages.hepsiburada.net/s/245/600-800/110000232203263.jpg/format:webp",
-                          fit: BoxFit.cover,
+                        child: Text(
+                          "Nike Air Jordon 1 Low Bulls Erkek Spor Ayakkabı",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          style: TextStyle(fontSize: Get.width * 0.035),
                         ),
-                      )),
-                  SizedBox(
-                    height: Get.width * 0.11,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-                      child: Text(
-                        "Nike Air Jordon 1 Low Bulls Erkek Spor Ayakkabı",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: true,
-                        style: TextStyle(fontSize: Get.width * 0.035),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: Get.width * 0.015,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: Get.width * 0.04,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: Get.width * 0.04,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: Get.width * 0.04,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: Get.width * 0.04,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: Get.width * 0.04,
-                      ),
-                      Text(" (312)", style: TextStyle(fontSize: Get.width * 0.03)),
-                    ],
-                  ),
-                  SizedBox(
-                    height: Get.width * 0.15,
-                    child: Row(
+                    Row(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.02),
-                          child: Text("4.325,09 ", style: TextStyle(fontSize: Get.width * 0.04, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          width: Get.width * 0.015,
                         ),
-                        Text("TL", style: TextStyle(fontSize: Get.width * 0.03, fontWeight: FontWeight.bold)),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: Get.width * 0.04,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: Get.width * 0.04,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: Get.width * 0.04,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: Get.width * 0.04,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: Get.width * 0.04,
+                        ),
+                        Text(" (312)", style: TextStyle(fontSize: Get.width * 0.03)),
                       ],
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: Get.width * 0.4,
-                      height: Get.width * 0.08,
-                      child: ElevatedButton(
-                        // style: ButtonStyle(shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)))),
-                        onPressed: (() {}),
-                        child: const Text("Sepete Ekle"),
+                    SizedBox(
+                      height: Get.width * 0.15,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: Get.width * 0.02),
+                            child: Text("4.325,09 ", style: TextStyle(fontSize: Get.width * 0.04, fontWeight: FontWeight.bold)),
+                          ),
+                          Text("TL", style: TextStyle(fontSize: Get.width * 0.03, fontWeight: FontWeight.bold)),
+                        ],
                       ),
                     ),
-                  )
-                ],
-              ));
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: Get.width * 0.4,
+                        height: Get.width * 0.08,
+                        child: ElevatedButton(
+                          // style: ButtonStyle(shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)))),
+                          onPressed: (() {}),
+                          child: const Text("Sepete Ekle"),
+                        ),
+                      ),
+                    )
+                  ],
+                )),
+          );
         },
         childCount: 200,
       ),
@@ -211,9 +218,14 @@ class _HomeBodyState extends State<HomeBody> {
         CarouselSlider.builder(
             itemCount: urlImages.length,
             itemBuilder: ((context, index, realIndex) {
-              return Image.network(urlImages[index]);
+              return InkWell(
+                  onTap: (() {
+                    print("tiklandi $index");
+                  }),
+                  child: Image.network(urlImages[index]));
             }),
             options: CarouselOptions(
+              viewportFraction: 0.8,
               onPageChanged: (index, reason) {
                 setState(() {
                   activeIndex = index;

@@ -19,6 +19,8 @@ class AuthService {
       idToken: googleAuth?.idToken,
     );
 
+    // await _firestore.collection("Person").doc(_auth.currentUser!.uid).set({'userName': googl, 'email': email, "password": password});
+
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }

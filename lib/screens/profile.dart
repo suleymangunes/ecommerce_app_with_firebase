@@ -1,4 +1,6 @@
 import 'package:dorilla/constants/myconstants.dart';
+import 'package:dorilla/main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +16,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +24,9 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-            child: Icon(
-              Icons.edit,
-              size: Get.width * 0.07,
+            child: IconButton(
+              onPressed: (() {}),
+              icon: Icon(Icons.edit, size: Get.width * 0.07),
             ),
           )
         ],
@@ -200,27 +203,32 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           SizedBox(
             width: Get.width,
-            child: Card(
-                margin: EdgeInsets.all(Get.width * 0.02),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: Get.width * 0.03, horizontal: Get.width * 0.01),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.language,
-                        size: Get.width * 0.07,
-                        color: MyConstants.instance.bitterSweetDark,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-                        child: Text(
-                          "Change Language",
-                          style: TextStyle(fontSize: Get.width * 0.04),
+            child: InkWell(
+              onTap: (() {
+                Get.to(DenemeSayfam());
+              }),
+              child: Card(
+                  margin: EdgeInsets.all(Get.width * 0.02),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: Get.width * 0.03, horizontal: Get.width * 0.01),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.language,
+                          size: Get.width * 0.07,
+                          color: MyConstants.instance.bitterSweetDark,
                         ),
-                      ),
-                    ],
-                  ),
-                )),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
+                          child: Text(
+                            "Change Language",
+                            style: TextStyle(fontSize: Get.width * 0.04),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+            ),
           ),
           SizedBox(
             width: Get.width,
@@ -256,6 +264,76 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class DenemeSayfam extends StatefulWidget {
+  const DenemeSayfam({Key? key}) : super(key: key);
+
+  @override
+  State<DenemeSayfam> createState() => _DenemeSayfamState();
+}
+
+class _DenemeSayfamState extends State<DenemeSayfam> {
+  listele() {
+    Future<ListResult> listem = FirebaseStorage.instance.ref().child("reklamlar").listAll();
+    return listem;
+  }
+
+  var reklamListem = [];
+
+  @override
+  void initState() {
+    var a = listele();
+    super.initState();
+  }
+
+  Reference ref = FirebaseStorage.instance.ref();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: FutureBuilder(
+          future: dosyayukle(),
+          builder: ((context, AsyncSnapshot snapshot) {
+            print(snapshot.data);
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: ((context, index) {
+                    return ListTile(
+                      title: Column(
+                        children: [
+                          Image.network(snapshot.data[index]),
+                          Text(snapshot.data[index]),
+                        ],
+                      ),
+                    );
+                  }));
+            } else {
+              return CircularProgressIndicator();
+            }
+            // // print(snapshot.data.items[2].name);
+            // // for (var i in snapshot.data.items) {
+            // //   print(i.name);
+            // //   reklamListem.add(ref.child("reklamlar/${i.name}").getDownloadURL());
+            // // }
+            // if (snapshot.hasData) {
+            //   FutureBuilder(builder: ((context, snapshot) {
+
+            //   }));
+            // //   return ListView.builder(
+            // //       itemCount: snapshot.data.items.length,
+            // //       itemBuilder: ((context, index) {
+            // //         return ListTile(
+            // //           title: Text(snapshot.data.items[index].name.toString()),
+            // //         );
+            // //       }));
+            // } else {
+            //   return CircularProgressIndicator();
+            // }
+          })),
     );
   }
 }

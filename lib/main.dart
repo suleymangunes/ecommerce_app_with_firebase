@@ -1,3 +1,8 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path_provider/path_provider.dart';
+
 import 'constants/material_color.dart';
 import 'constants/myconstants.dart';
 import 'service/firebase_options.dart';
@@ -7,6 +12,28 @@ import 'service/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+dosyayukle() async {
+  final storageRef = FirebaseStorage.instance.ref();
+
+  final linkListe = [];
+  final imageUrl = await storageRef.child("reklamlar/").listAll();
+  for (var i in imageUrl.items) {
+    linkListe.add(await storageRef.child("reklamlar/${i.name}").getDownloadURL());
+  }
+  return linkListe;
+}
+
+reklamListem() async {
+  final storageRef = FirebaseStorage.instance.ref();
+
+  final linkListe = [];
+  final imageUrl = await storageRef.child("reklamlar/").listAll();
+  for (var i in imageUrl.items) {
+    linkListe.add(await storageRef.child("reklamlar/${i.name}").getDownloadURL());
+  }
+  return linkListe;
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

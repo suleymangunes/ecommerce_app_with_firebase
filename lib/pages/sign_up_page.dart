@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rive/rive.dart';
@@ -21,6 +23,9 @@ class _SingUpPageState extends State<SingUpPage> {
   final TextEditingController _controllerMail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   bool _butstate = false;
+
+  final FirebaseAuth _authFire = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void dispose() {
@@ -182,6 +187,10 @@ class _SingUpPageState extends State<SingUpPage> {
                                   child: Text("Try Again", style: TextStyle(fontSize: Get.width * 0.030))),
                             ));
                       }).then((value) {
+                        _firestore
+                            .collection("Person")
+                            .doc(_authFire.currentUser?.uid)
+                            .set({'userName': value.additionalUserInfo?.profile!["name"], 'email': value.additionalUserInfo?.profile!["email"]});
                         Get.offAll(const MyHomePage());
                       });
                     }),

@@ -22,6 +22,14 @@ class _MyHomePageState extends State<MyHomePage> {
   final screens = [const HomePage(), const CategoriesPage(), const CartPage(), const FovoritedPage(), const ProfilePage()];
 
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      MyHomePage();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[_selectedIndex],

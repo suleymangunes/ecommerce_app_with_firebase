@@ -10,18 +10,18 @@ class CatFeMAle extends StatefulWidget {
 
 class _CatFeMAleState extends State<CatFeMAle> {
   final cateList = [
-    "https://cdn-icons-png.flaticon.com/512/1785/1785348.png",
-    "https://cdn3.iconfinder.com/data/icons/clothing-set-4/64/tshirt-other-512.png",
-    "https://image.shutterstock.com/image-vector/business-suit-icon-600w-381894436.jpg",
-    "https://img.freepik.com/premium-vector/hand-drawn-business-men-s-tie-icon-black-white-doodle-illustration_571637-184.jpg?w=2000",
-    "https://image.shutterstock.com/image-illustration/sock-icon-simple-illustration-web-260nw-1081067246.jpg",
-    "https://cdn.iconscout.com/icon/premium/png-256-thumb/jacket-147-1119502.png",
-    "https://media.istockphoto.com/vectors/cap-icon-on-white-background-vector-id924676466?k=20&m=924676466&s=170667a&w=0&h=75pBKf7EvTXPWUfZkRm8jGZKI3PDB4MSBLUPUbhTuTo=",
-    "https://previews.123rf.com/images/mizinatanya/mizinatanya1905/mizinatanya190500003/123201666-bottle-of-male-perfume-icon-symbol-silhouette-isolated-vector-image-.jpg",
-    "https://media.istockphoto.com/vectors/watch-icon-vector-illustratio-black-wristwatch-pictogram-symbol-clock-vector-id627993910?k=20&m=627993910&s=170667a&w=0&h=ArnZLS2LBW4Zzjg8rsIuMkceNAXyk_XXRYcjHHdb-fE=",
-    "https://cdn-icons-png.flaticon.com/512/88/88823.png",
+    "https://media.istockphoto.com/vectors/red-shoe-flat-icon-pixel-perfect-for-mobile-and-web-vector-id1149626405?k=20&m=1149626405&s=170667a&w=0&h=KpCxgjmmgDXPDG83d2XvtMtcIGiJuQN-840BH-hWKN4=",
+    "https://media.istockphoto.com/vectors/pink-tshirt-icon-vector-id694210240?k=20&m=694210240&s=612x612&w=0&h=qw61hel6huTQOQsla-28b4-UEUB-cqPLcY8fqE4uCFY=",
+    "https://cdn-icons-png.flaticon.com/512/1785/1785375.png",
+    "https://cdn-icons-png.flaticon.com/512/2290/2290546.png",
+    "https://cdn-icons-png.flaticon.com/512/343/343394.png",
+    "https://icons.veryicon.com/png/o/clothes-accessories/new-in-spring-4/cotton-padded-clothes-5.png",
+    "https://cdn-icons-png.flaticon.com/512/5258/5258293.png",
+    "https://i.pinimg.com/originals/5f/f3/10/5ff3109afcc9da44a4867018ad228e7a.jpg",
+    "https://static.vecteezy.com/system/resources/previews/008/319/393/original/gold-bracelet-color-icon-illustration-vector.jpg",
+    "https://cdn1.iconfinder.com/data/icons/clothes-outfit-mono-color-shop-aholic/512/Trouser_women-512.png",
   ];
-  final cateNames = ["Shoe", "T-shirt", "Suit", "Tie", "Sock", "Jacket", "Cap", "Parfume", "Watch", "Pant"];
+  final cateNames = ["Shoe", "T-shirt", "Dress", "Skirt", "Sock", "Jacket", "Bag", "Parfume", "Watch", "Pant"];
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,13 @@ class _CatFeMAleState extends State<CatFeMAle> {
                 margin: EdgeInsets.all(Get.width * 0.08),
                 child: Column(
                   children: [
-                    SizedBox(width: Get.width * 0.3, height: Get.width * 0.3, child: Image.network(cateList[index])),
+                    SizedBox(
+                        width: Get.width * 0.3,
+                        height: Get.width * 0.3,
+                        child: Image.network(
+                          cateList[index],
+                          fit: BoxFit.cover,
+                        )),
                   ],
                 ),
               ));

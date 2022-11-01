@@ -49,8 +49,10 @@ dependencies:
   dot_navigation_bar: ^1.0.1+4
   toggle_switch: ^2.0.1
   modal_bottom_sheet: ^2.1.2
-  sliding_sheet: ^0.5.2
   expandable_page_view: ^1.0.17
+  firebase_core_platform_interface: 4.5.1
+  firebase_storage: ^11.0.2
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:
